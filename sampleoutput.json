@@ -1,16 +1,7 @@
-import './App.css';
-import React, { Component } from 'react';
-import Navbar2 from './components/Navbar2';
-import Newsitem from './components/Newsitem';
-import LATEST from './components/LATEST';
-import Footer from './components/footer';
-
-export default class App extends Component {
-  constructor(props) {
-    super(props);
-
-    // correct: define articles as a variable, then use it
-    const articles =[
+{
+  "status": "ok",
+  "totalResults": 10,
+  "articles": [
     {
       "source": { "id": "bbc-news", "name": "BBC News" },
       "author": "BBC News",
@@ -111,45 +102,5 @@ export default class App extends Component {
       "publishedAt": "2025-09-14T21:22:22.0737793Z",
       "content": "But no reinforcements are coming because of the Taliban government's restrictions on women. Three years ago, all higher education, including medical education was banned for women. Less than a year a… [+1557 chars]"
     }
-  ] ;
-   
-    this.state = {
-      articles:articles,  // now this.state.articles is an array, so you can map safely
-    };
-  }
-async componentDidMount() {
-  
-    const url =
-      "https://newsapi.org/v2/everything?q=tesla&from=2025-08-26&sortBy=publishedAt&apiKey=6d9c4bce646e4ceabb3c01821ef9e3f6";
-
-    const response = await fetch(url);
-    console.log("Response status:", response.status);
-    const data = await response.json();
-
- this.setState({articles: data.articles});
-} 
-
-  render() {
-    return (
-      <div>
-        <Navbar2 />
-        <LATEST/>
-        <h1 style={{ paddingLeft: "43px", marginTop: "10px" ,fontFamily:"fantasy"}}>Top-headlines</h1>
-        <section className="news-grid">
-          {this.state.articles.map((element) => {
-            return (
-              <Newsitem
-                key={element.url}
-                title={element.title?element.title:""}
-                imagurl={element.urlToImage?element.urlToImage: "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/4301/live/22dc5b10-91da-11f0-9cf6-cbf3e73ce2b9.jpg" }  // using actual image from element
-                description={element.description?element.title:""}
-                url={element.url}
-              />
-            );
-          })}
-        </section>
-        <Footer/>
-      </div>
-    );
-  }
+  ]
 }
