@@ -126,7 +126,7 @@ async componentDidMount() {
     console.log("Response status:", response.status);
     const data = await response.json();
 
- this.setState({articles: data.articles});
+ // this.setState({articles: data.articles});
 } 
 
   render() {
