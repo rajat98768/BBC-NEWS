@@ -152,7 +152,7 @@ export default class LATEST extends Component {
 
       const response = await fetch(url);
       const data = await response.json();
-      this.setState({ articles: data.articles || [] });
+      //this.setState({ articles: data.articles || [] });
 
       // Rotate news every 5 seconds
       this.interval = setInterval(() => {
